@@ -16,8 +16,6 @@ TripTally is a full-stack web app for **group travel expense sharing**. People o
 | **Frontend** | Angular 16, TypeScript 5, RxJS, Zone.js |
 | **Frontend UI** | Tailwind CSS 3, PostCSS, Autoprefixer |
 | **Icons** | **Iconify** web component (`iconify-icon`, MDI set via CDN in `index.html`) |
-| **Frontend tests** | Karma, Jasmine |
-| **Docs in repo** | Mermaid diagram below |
 
 ## Architecture
 
@@ -139,15 +137,6 @@ Production build:
 npx ng build
 ```
 
-## Tests (backend)
-
-```bash
-cd Trip-Backend
-mvn test
-```
-
-Includes focused tests for **equal split**, **exact validation**, **percentage validation**, **share split**, and **settlement simplification**.
-
 ## API overview
 
 | Area | Method | Path |
@@ -160,17 +149,3 @@ Includes focused tests for **equal split**, **exact validation**, **percentage v
 | Notifications | GET / POST | `/api/notifications`, `/api/notifications/unread-count`, `/api/notifications/{id}/read` |
 
 See controllers under `com.tripTally.controller` for the full contract.
-
-## Screenshot placeholders
-
-Add portfolio screenshots under `docs/screenshots/` (suggested names):
-
-- `01-trip-dashboard.png` — trip summary, category bars, latest expenses  
-- `02-expense-form.png` — split editor + receipt upload  
-- `03-balances.png` — green/red balance cards + settlement suggestions  
-
-Until you add real images, see `docs/screenshots/PLACEHOLDERS.md`.
-
-## License
-
-Portfolio / demonstration project — adjust as needed for your use.
