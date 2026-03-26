@@ -1,4 +1,4 @@
-package com.triptally.dto.expense;
+package com.tripTally.dto.expense;
 
 import java.math.BigDecimal;
 import lombok.Builder;

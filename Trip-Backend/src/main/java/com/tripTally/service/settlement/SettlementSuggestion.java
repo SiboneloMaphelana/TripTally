@@ -1,4 +1,4 @@
-package com.triptally.service.settlement;
+package com.tripTally.service.settlement;
 
 import java.math.BigDecimal;
 import lombok.Builder;

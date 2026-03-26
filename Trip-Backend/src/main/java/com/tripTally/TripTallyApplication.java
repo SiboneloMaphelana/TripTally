@@ -1,6 +1,6 @@
-package com.triptally;
+package com.tripTally;
 
-import com.triptally.config.TriptallyProperties;
+import com.tripTally.config.TriptallyProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

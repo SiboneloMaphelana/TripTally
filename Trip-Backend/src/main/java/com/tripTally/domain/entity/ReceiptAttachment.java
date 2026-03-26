@@ -1,4 +1,4 @@
-package com.triptally.domain.entity;
+package com.tripTally.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

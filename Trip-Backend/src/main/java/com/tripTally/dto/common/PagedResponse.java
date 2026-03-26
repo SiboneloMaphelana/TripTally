@@ -1,4 +1,4 @@
-package com.triptally.dto.common;
+package com.tripTally.dto.common;
 
 import java.util.List;
 import lombok.Builder;

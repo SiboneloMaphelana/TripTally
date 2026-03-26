@@ -1,4 +1,4 @@
-package com.triptally.dto.auth;
+package com.tripTally.dto.auth;
 
 import lombok.Builder;
 import lombok.Value;

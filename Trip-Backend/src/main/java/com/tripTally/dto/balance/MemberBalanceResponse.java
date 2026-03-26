@@ -1,4 +1,4 @@
-package com.triptally.dto.balance;
+package com.tripTally.dto.balance;
 
 import java.math.BigDecimal;
 import lombok.Builder;

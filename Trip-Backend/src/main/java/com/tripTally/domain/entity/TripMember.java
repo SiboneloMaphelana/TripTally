@@ -1,4 +1,4 @@
-package com.triptally.domain.entity;
+package com.tripTally.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -41,7 +41,7 @@ public class TripMember {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
-	private User user;
+	private com.tripTally.domain.entity.User user;
 
 	@Column(name = "display_name", nullable = false, length = 120)
 	private String displayName;
@@ -51,7 +51,7 @@ public class TripMember {
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 20)
-	private TripMemberRole role;
+	private com.tripTally.domain.entity.TripMemberRole role;
 
 	@CreatedDate
 	@Column(name = "created_at", nullable = false, updatable = false)

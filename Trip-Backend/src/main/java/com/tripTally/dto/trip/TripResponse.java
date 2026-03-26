@@ -1,4 +1,4 @@
-package com.triptally.dto.trip;
+package com.tripTally.dto.trip;
 
 import java.time.LocalDate;
 import lombok.Builder;

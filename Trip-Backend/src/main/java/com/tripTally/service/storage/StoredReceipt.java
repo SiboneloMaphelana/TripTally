@@ -1,4 +1,4 @@
-package com.triptally.service.storage;
+package com.tripTally.service.storage;
 
 import lombok.Value;
 

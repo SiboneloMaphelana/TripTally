@@ -1,7 +1,7 @@
-package com.triptally.dto.expense;
+package com.tripTally.dto.expense;
 
-import com.triptally.domain.entity.ExpenseCategory;
-import com.triptally.domain.entity.SplitMode;
+import com.tripTally.domain.entity.ExpenseCategory;
+import com.tripTally.domain.entity.SplitMode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;

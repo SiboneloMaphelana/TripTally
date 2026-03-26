@@ -1,4 +1,4 @@
-package com.triptally.domain.entity;
+package com.tripTally.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,7 +37,7 @@ public class Trip {
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "owner_user_id", nullable = false)
-	private User owner;
+	private com.tripTally.domain.entity.User owner;
 
 	@Column(nullable = false, length = 200)
 	private String title;

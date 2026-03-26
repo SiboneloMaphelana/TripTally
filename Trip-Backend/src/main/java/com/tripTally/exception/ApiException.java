@@ -1,4 +1,4 @@
-package com.triptally.exception;
+package com.tripTally.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

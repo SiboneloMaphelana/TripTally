@@ -1,7 +1,7 @@
-package com.triptally.service.split;
+package com.tripTally.service.split;
 
-import com.triptally.domain.entity.SplitMode;
-import com.triptally.exception.ApiException;
+import com.tripTally.domain.entity.SplitMode;
+import com.tripTally.exception.ApiException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;

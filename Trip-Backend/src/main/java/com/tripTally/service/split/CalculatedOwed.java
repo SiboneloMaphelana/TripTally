@@ -1,4 +1,4 @@
-package com.triptally.service.split;
+package com.tripTally.service.split;
 
 import java.math.BigDecimal;
 import lombok.Builder;

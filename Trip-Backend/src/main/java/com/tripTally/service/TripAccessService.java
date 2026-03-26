@@ -1,10 +1,10 @@
-package com.triptally.service;
+package com.tripTally.service;
 
-import com.triptally.domain.entity.Trip;
-import com.triptally.domain.entity.User;
-import com.triptally.exception.ApiException;
-import com.triptally.repository.TripMemberRepository;
-import com.triptally.repository.TripRepository;
+import com.tripTally.domain.entity.Trip;
+import com.tripTally.domain.entity.User;
+import com.tripTally.exception.ApiException;
+import com.tripTally.repository.TripMemberRepository;
+import com.tripTally.repository.TripRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

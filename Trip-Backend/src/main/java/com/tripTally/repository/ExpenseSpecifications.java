@@ -1,9 +1,9 @@
-package com.triptally.repository;
+package com.tripTally.repository;
 
-import com.triptally.domain.entity.Expense;
-import com.triptally.domain.entity.ExpenseCategory;
-import com.triptally.domain.entity.ExpenseParticipant;
-import com.triptally.domain.entity.Trip;
+import com.tripTally.domain.entity.Expense;
+import com.tripTally.domain.entity.ExpenseCategory;
+import com.tripTally.domain.entity.ExpenseParticipant;
+import com.tripTally.domain.entity.Trip;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Subquery;

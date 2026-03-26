@@ -1,4 +1,4 @@
-package com.triptally.dto.settlement;
+package com.tripTally.dto.settlement;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;

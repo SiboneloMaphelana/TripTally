@@ -1,9 +1,9 @@
-package com.triptally.service;
+package com.tripTally.service;
 
-import com.triptally.domain.entity.User;
-import com.triptally.exception.ApiException;
-import com.triptally.repository.UserRepository;
-import com.triptally.security.AppUserDetails;
+import com.tripTally.domain.entity.User;
+import com.tripTally.exception.ApiException;
+import com.tripTally.repository.UserRepository;
+import com.tripTally.security.AppUserDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

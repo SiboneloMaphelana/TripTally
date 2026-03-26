@@ -1,4 +1,4 @@
-package com.triptally.dto.settlement;
+package com.tripTally.dto.settlement;
 
 import java.math.BigDecimal;
 import java.time.Instant;

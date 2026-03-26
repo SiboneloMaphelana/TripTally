@@ -1,6 +1,6 @@
-package com.triptally.service.storage;
+package com.tripTally.service.storage;
 
-import com.triptally.config.TriptallyProperties;
+import com.tripTally.config.TriptallyProperties;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;

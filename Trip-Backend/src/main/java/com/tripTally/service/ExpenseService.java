@@ -1,26 +1,26 @@
-package com.triptally.service;
+package com.tripTally.service;
 
-import com.triptally.domain.entity.Expense;
-import com.triptally.domain.entity.ExpenseCategory;
-import com.triptally.domain.entity.ExpenseParticipant;
-import com.triptally.domain.entity.Trip;
-import com.triptally.domain.entity.TripMember;
-import com.triptally.domain.entity.User;
-import com.triptally.dto.common.PagedResponse;
-import com.triptally.dto.expense.ExpenseCreateRequest;
-import com.triptally.dto.expense.ExpenseParticipantRequest;
-import com.triptally.dto.expense.ExpenseResponse;
-import com.triptally.dto.expense.ExpenseUpdateRequest;
-import com.triptally.exception.ApiException;
-import com.triptally.mapper.DtoMapper;
-import com.triptally.repository.ExpenseParticipantRepository;
-import com.triptally.repository.ExpenseRepository;
-import com.triptally.repository.ExpenseSpecifications;
-import com.triptally.repository.ReceiptAttachmentRepository;
-import com.triptally.repository.TripMemberRepository;
-import com.triptally.service.split.CalculatedOwed;
-import com.triptally.service.split.ExpenseSplitCalculator;
-import com.triptally.service.split.SplitParticipantInput;
+import com.tripTally.domain.entity.Expense;
+import com.tripTally.domain.entity.ExpenseCategory;
+import com.tripTally.domain.entity.ExpenseParticipant;
+import com.tripTally.domain.entity.Trip;
+import com.tripTally.domain.entity.TripMember;
+import com.tripTally.domain.entity.User;
+import com.tripTally.dto.common.PagedResponse;
+import com.tripTally.dto.expense.ExpenseCreateRequest;
+import com.tripTally.dto.expense.ExpenseParticipantRequest;
+import com.tripTally.dto.expense.ExpenseResponse;
+import com.tripTally.dto.expense.ExpenseUpdateRequest;
+import com.tripTally.exception.ApiException;
+import com.tripTally.mapper.DtoMapper;
+import com.tripTally.repository.ExpenseParticipantRepository;
+import com.tripTally.repository.ExpenseRepository;
+import com.tripTally.repository.ExpenseSpecifications;
+import com.tripTally.repository.ReceiptAttachmentRepository;
+import com.tripTally.repository.TripMemberRepository;
+import com.tripTally.service.split.CalculatedOwed;
+import com.tripTally.service.split.ExpenseSplitCalculator;
+import com.tripTally.service.split.SplitParticipantInput;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -39,7 +39,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ExpenseService {
 
-	private final TripAccessService tripAccessService;
+	private final com.tripTally.service.TripAccessService tripAccessService;
 	private final ExpenseRepository expenseRepository;
 	private final ExpenseParticipantRepository expenseParticipantRepository;
 	private final TripMemberRepository tripMemberRepository;

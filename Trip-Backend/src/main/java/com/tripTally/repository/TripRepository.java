@@ -1,7 +1,7 @@
-package com.triptally.repository;
+package com.tripTally.repository;
 
-import com.triptally.domain.entity.Trip;
-import com.triptally.domain.entity.User;
+import com.tripTally.domain.entity.Trip;
+import com.tripTally.domain.entity.User;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

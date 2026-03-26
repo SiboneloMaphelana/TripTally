@@ -1,13 +1,17 @@
-package com.triptally.controller;
+package com.tripTally.controller;
 
-import com.triptally.dto.auth.AuthResponse;
-import com.triptally.dto.auth.LoginRequest;
-import com.triptally.dto.auth.RegisterRequest;
-import com.triptally.dto.auth.UserResponse;
-import com.triptally.service.AuthService;
-import com.triptally.service.CurrentUserService;
+import com.tripTally.dto.auth.AuthResponse;
+import com.tripTally.dto.auth.ChangePasswordRequest;
+import com.tripTally.dto.auth.LoginRequest;
+import com.tripTally.dto.auth.ProfileUpdateRequest;
+import com.tripTally.dto.auth.ProfileUpdateResponse;
+import com.tripTally.dto.auth.RegisterRequest;
+import com.tripTally.dto.auth.UserResponse;
+import com.tripTally.service.AuthService;
+import com.tripTally.service.CurrentUserService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,5 +42,15 @@ public class AuthController {
 	@GetMapping("/me")
 	public UserResponse me() {
 		return authService.me(currentUserService.requireUser());
+	}
+
+	@PatchMapping("/me")
+	public ProfileUpdateResponse updateMe(@Valid @RequestBody ProfileUpdateRequest request) {
+		return authService.updateProfile(currentUserService.requireUser(), request);
+	}
+
+	@PostMapping("/change-password")
+	public void changePassword(@Valid @RequestBody ChangePasswordRequest request) {
+		authService.changePassword(currentUserService.requireUser(), request);
 	}
 }

@@ -1,4 +1,4 @@
-package com.triptally.config;
+package com.tripTally.config;
 
 import lombok.Getter;
 import lombok.Setter;

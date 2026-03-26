@@ -1,4 +1,4 @@
-package com.triptally.dto.trip;
+package com.tripTally.dto.trip;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

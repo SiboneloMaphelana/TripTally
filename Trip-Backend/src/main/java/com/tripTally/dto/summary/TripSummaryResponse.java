@@ -1,7 +1,7 @@
-package com.triptally.dto.summary;
+package com.tripTally.dto.summary;
 
-import com.triptally.domain.entity.ExpenseCategory;
-import com.triptally.dto.expense.ExpenseResponse;
+import com.tripTally.domain.entity.ExpenseCategory;
+import com.tripTally.dto.expense.ExpenseResponse;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;

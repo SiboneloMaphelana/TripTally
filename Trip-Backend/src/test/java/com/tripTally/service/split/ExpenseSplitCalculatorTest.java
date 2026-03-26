@@ -1,10 +1,10 @@
-package com.triptally.service.split;
+package com.tripTally.service.split;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.triptally.domain.entity.SplitMode;
-import com.triptally.exception.ApiException;
+import com.tripTally.domain.entity.SplitMode;
+import com.tripTally.exception.ApiException;
 import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.Test;

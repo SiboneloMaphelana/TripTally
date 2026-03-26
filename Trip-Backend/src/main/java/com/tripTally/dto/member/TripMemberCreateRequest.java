@@ -1,4 +1,4 @@
-package com.triptally.dto.member;
+package com.tripTally.dto.member;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;

@@ -1,4 +1,4 @@
-package com.triptally.dto.expense;
+package com.tripTally.dto.expense;
 
 import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;

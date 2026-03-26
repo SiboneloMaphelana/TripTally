@@ -1,15 +1,16 @@
-package com.triptally.service;
+package com.tripTally.service;
 
-import com.triptally.domain.entity.Trip;
-import com.triptally.domain.entity.TripMember;
-import com.triptally.domain.entity.TripMemberRole;
-import com.triptally.domain.entity.User;
-import com.triptally.dto.member.TripMemberCreateRequest;
-import com.triptally.dto.member.TripMemberResponse;
-import com.triptally.exception.ApiException;
-import com.triptally.mapper.DtoMapper;
-import com.triptally.repository.TripMemberRepository;
-import com.triptally.repository.UserRepository;
+import com.tripTally.domain.entity.Trip;
+import com.tripTally.domain.entity.TripMember;
+import com.tripTally.domain.entity.TripMemberRole;
+import com.tripTally.domain.entity.User;
+import com.tripTally.dto.member.TripMemberCreateRequest;
+import com.tripTally.dto.member.TripMemberResponse;
+import com.tripTally.dto.member.TripMemberSelfResponse;
+import com.tripTally.exception.ApiException;
+import com.tripTally.mapper.DtoMapper;
+import com.tripTally.repository.TripMemberRepository;
+import com.tripTally.repository.UserRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
@@ -41,6 +42,16 @@ public class TripMemberService {
 		return tripMemberRepository.findByTripOrderByCreatedAtAsc(trip).stream()
 				.map(dtoMapper::toMember)
 				.toList();
+	}
+
+	@Transactional(readOnly = true)
+	public TripMemberSelfResponse selfMember(Long tripId, User user) {
+		Trip trip = tripAccessService.requireTripMember(tripId, user);
+		TripMember m = tripMemberRepository
+				.findByTripAndUser_Id(trip, user.getId())
+				.orElseThrow(() -> new ApiException(
+						HttpStatus.NOT_FOUND, "Your account is not linked to a traveler on this trip."));
+		return TripMemberSelfResponse.builder().tripMemberId(m.getId()).build();
 	}
 
 	@Transactional

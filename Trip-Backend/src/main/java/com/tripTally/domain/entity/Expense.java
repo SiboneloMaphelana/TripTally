@@ -1,4 +1,4 @@
-package com.triptally.domain.entity;
+package com.tripTally.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,18 +43,18 @@ public class Expense {
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "trip_id", nullable = false)
-	private Trip trip;
+	private com.tripTally.domain.entity.Trip trip;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "payer_member_id", nullable = false)
-	private TripMember payer;
+	private com.tripTally.domain.entity.TripMember payer;
 
 	@Column(nullable = false, precision = 19, scale = 2)
 	private BigDecimal amount;
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 40)
-	private ExpenseCategory category;
+	private com.tripTally.domain.entity.ExpenseCategory category;
 
 	@Column(nullable = false, length = 500)
 	private String description;
@@ -64,7 +64,7 @@ public class Expense {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "split_mode", nullable = false, length = 20)
-	private SplitMode splitMode;
+	private com.tripTally.domain.entity.SplitMode splitMode;
 
 	@Column(nullable = false)
 	private boolean settled;
@@ -79,5 +79,5 @@ public class Expense {
 
 	@Builder.Default
 	@OneToMany(mappedBy = "expense", fetch = FetchType.LAZY)
-	private List<ExpenseParticipant> participants = new ArrayList<>();
+	private List<com.tripTally.domain.entity.ExpenseParticipant> participants = new ArrayList<>();
 }

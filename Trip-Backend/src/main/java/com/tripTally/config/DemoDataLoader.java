@@ -1,20 +1,20 @@
-package com.triptally.config;
+package com.tripTally.config;
 
-import com.triptally.domain.entity.Expense;
-import com.triptally.domain.entity.ExpenseCategory;
-import com.triptally.domain.entity.ExpenseParticipant;
-import com.triptally.domain.entity.Settlement;
-import com.triptally.domain.entity.SplitMode;
-import com.triptally.domain.entity.Trip;
-import com.triptally.domain.entity.TripMember;
-import com.triptally.domain.entity.TripMemberRole;
-import com.triptally.domain.entity.User;
-import com.triptally.repository.ExpenseParticipantRepository;
-import com.triptally.repository.ExpenseRepository;
-import com.triptally.repository.SettlementRepository;
-import com.triptally.repository.TripMemberRepository;
-import com.triptally.repository.TripRepository;
-import com.triptally.repository.UserRepository;
+import com.tripTally.domain.entity.Expense;
+import com.tripTally.domain.entity.ExpenseCategory;
+import com.tripTally.domain.entity.ExpenseParticipant;
+import com.tripTally.domain.entity.Settlement;
+import com.tripTally.domain.entity.SplitMode;
+import com.tripTally.domain.entity.Trip;
+import com.tripTally.domain.entity.TripMember;
+import com.tripTally.domain.entity.TripMemberRole;
+import com.tripTally.domain.entity.User;
+import com.tripTally.repository.ExpenseParticipantRepository;
+import com.tripTally.repository.ExpenseRepository;
+import com.tripTally.repository.SettlementRepository;
+import com.tripTally.repository.TripMemberRepository;
+import com.tripTally.repository.TripRepository;
+import com.tripTally.repository.UserRepository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import org.springframework.boot.CommandLineRunner;
@@ -140,11 +140,11 @@ public class DemoDataLoader implements CommandLineRunner {
 
 		settlementRepository.save(Settlement.builder()
 				.trip(trip)
-				.fromMember(mJules)
+				.fromMember(mSam)
 				.toMember(mAlex)
 				.amount(new BigDecimal("200.00"))
 				.note("Cash for activities kitty")
-				.recordedBy(alex)
+				.recordedBy(samUser)
 				.build());
 	}
 

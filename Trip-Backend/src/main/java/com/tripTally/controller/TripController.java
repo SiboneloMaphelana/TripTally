@@ -1,26 +1,30 @@
-package com.triptally.controller;
+package com.tripTally.controller;
 
-import com.triptally.domain.entity.ExpenseCategory;
-import com.triptally.dto.common.PagedResponse;
-import com.triptally.dto.expense.ExpenseCreateRequest;
-import com.triptally.dto.expense.ExpenseResponse;
-import com.triptally.dto.member.TripMemberCreateRequest;
-import com.triptally.dto.member.TripMemberResponse;
-import com.triptally.dto.settlement.SettlementCreateRequest;
-import com.triptally.dto.settlement.SettlementResponse;
-import com.triptally.dto.settlement.SettlementSuggestionResponse;
-import com.triptally.dto.summary.TripSummaryResponse;
-import com.triptally.dto.trip.TripCreateRequest;
-import com.triptally.dto.trip.TripResponse;
-import com.triptally.dto.trip.TripUpdateRequest;
-import com.triptally.dto.balance.TripBalancesResponse;
-import com.triptally.service.CurrentUserService;
-import com.triptally.service.ExpenseService;
-import com.triptally.service.ReportService;
-import com.triptally.service.SettlementRecordingService;
-import com.triptally.service.TripLedgerService;
-import com.triptally.service.TripMemberService;
-import com.triptally.service.TripService;
+import com.tripTally.domain.entity.ExpenseCategory;
+import com.tripTally.dto.common.PagedResponse;
+import com.tripTally.dto.expense.ExpenseCreateRequest;
+import com.tripTally.dto.expense.ExpenseResponse;
+import com.tripTally.dto.member.TripMemberCreateRequest;
+import com.tripTally.dto.member.TripMemberResponse;
+import com.tripTally.dto.member.TripMemberSelfResponse;
+import com.tripTally.dto.payment.PaymentRequestCreateRequest;
+import com.tripTally.dto.payment.PaymentRequestResponse;
+import com.tripTally.dto.settlement.SettlementCreateRequest;
+import com.tripTally.dto.settlement.SettlementResponse;
+import com.tripTally.dto.settlement.SettlementSuggestionResponse;
+import com.tripTally.dto.summary.TripSummaryResponse;
+import com.tripTally.dto.trip.TripCreateRequest;
+import com.tripTally.dto.trip.TripResponse;
+import com.tripTally.dto.trip.TripUpdateRequest;
+import com.tripTally.dto.balance.TripBalancesResponse;
+import com.tripTally.service.CurrentUserService;
+import com.tripTally.service.ExpenseService;
+import com.tripTally.service.ReportService;
+import com.tripTally.service.PaymentRequestService;
+import com.tripTally.service.SettlementRecordingService;
+import com.tripTally.service.TripLedgerService;
+import com.tripTally.service.TripMemberService;
+import com.tripTally.service.TripService;
 import jakarta.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
@@ -46,6 +50,7 @@ public class TripController {
 	private final ExpenseService expenseService;
 	private final TripLedgerService tripLedgerService;
 	private final SettlementRecordingService settlementRecordingService;
+	private final PaymentRequestService paymentRequestService;
 	private final ReportService reportService;
 	private final CurrentUserService currentUserService;
 
@@ -55,6 +60,7 @@ public class TripController {
 			ExpenseService expenseService,
 			TripLedgerService tripLedgerService,
 			SettlementRecordingService settlementRecordingService,
+			PaymentRequestService paymentRequestService,
 			ReportService reportService,
 			CurrentUserService currentUserService) {
 		this.tripService = tripService;
@@ -62,6 +68,7 @@ public class TripController {
 		this.expenseService = expenseService;
 		this.tripLedgerService = tripLedgerService;
 		this.settlementRecordingService = settlementRecordingService;
+		this.paymentRequestService = paymentRequestService;
 		this.reportService = reportService;
 		this.currentUserService = currentUserService;
 	}
@@ -100,6 +107,23 @@ public class TripController {
 	@GetMapping("/{tripId}/members")
 	public List<TripMemberResponse> listMembers(@PathVariable Long tripId) {
 		return tripMemberService.list(tripId, currentUserService.requireUser());
+	}
+
+	@GetMapping("/{tripId}/members/me")
+	public TripMemberSelfResponse myMember(@PathVariable Long tripId) {
+		return tripMemberService.selfMember(tripId, currentUserService.requireUser());
+	}
+
+	@GetMapping("/{tripId}/payment-requests")
+	public List<PaymentRequestResponse> listPaymentRequests(@PathVariable Long tripId) {
+		return paymentRequestService.list(tripId, currentUserService.requireUser());
+	}
+
+	@PostMapping("/{tripId}/payment-requests")
+	public PaymentRequestResponse createPaymentRequest(
+			@PathVariable Long tripId,
+			@Valid @RequestBody PaymentRequestCreateRequest request) {
+		return paymentRequestService.create(tripId, currentUserService.requireUser(), request);
 	}
 
 	@GetMapping("/{tripId}/expenses")

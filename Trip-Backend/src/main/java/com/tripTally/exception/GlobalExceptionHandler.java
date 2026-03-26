@@ -1,4 +1,4 @@
-package com.triptally.exception;
+package com.tripTally.exception;
 
 import java.time.Instant;
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.triptally.dto.member;
+package com.tripTally.dto.member;
 
-import com.triptally.domain.entity.TripMemberRole;
+import com.tripTally.domain.entity.TripMemberRole;
 import lombok.Builder;
 import lombok.Value;
 

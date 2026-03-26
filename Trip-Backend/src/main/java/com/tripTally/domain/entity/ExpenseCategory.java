@@ -1,4 +1,4 @@
-package com.triptally.domain.entity;
+package com.tripTally.domain.entity;
 
 public enum ExpenseCategory {
 	ACCOMMODATION,

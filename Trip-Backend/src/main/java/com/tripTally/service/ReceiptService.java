@@ -1,13 +1,13 @@
-package com.triptally.service;
+package com.tripTally.service;
 
-import com.triptally.domain.entity.Expense;
-import com.triptally.domain.entity.ReceiptAttachment;
-import com.triptally.domain.entity.User;
-import com.triptally.exception.ApiException;
-import com.triptally.repository.ExpenseRepository;
-import com.triptally.repository.ReceiptAttachmentRepository;
-import com.triptally.service.storage.LocalReceiptStorageService;
-import com.triptally.service.storage.StoredReceipt;
+import com.tripTally.domain.entity.Expense;
+import com.tripTally.domain.entity.ReceiptAttachment;
+import com.tripTally.domain.entity.User;
+import com.tripTally.exception.ApiException;
+import com.tripTally.repository.ExpenseRepository;
+import com.tripTally.repository.ReceiptAttachmentRepository;
+import com.tripTally.service.storage.LocalReceiptStorageService;
+import com.tripTally.service.storage.StoredReceipt;
 import java.io.IOException;
 import java.nio.file.Files;
 import org.springframework.core.io.Resource;

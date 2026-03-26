@@ -1,15 +1,15 @@
-package com.triptally.service;
+package com.tripTally.service;
 
-import com.triptally.domain.entity.Settlement;
-import com.triptally.domain.entity.Trip;
-import com.triptally.domain.entity.TripMember;
-import com.triptally.domain.entity.User;
-import com.triptally.dto.settlement.SettlementCreateRequest;
-import com.triptally.dto.settlement.SettlementResponse;
-import com.triptally.exception.ApiException;
-import com.triptally.mapper.DtoMapper;
-import com.triptally.repository.SettlementRepository;
-import com.triptally.repository.TripMemberRepository;
+import com.tripTally.domain.entity.Settlement;
+import com.tripTally.domain.entity.Trip;
+import com.tripTally.domain.entity.TripMember;
+import com.tripTally.domain.entity.User;
+import com.tripTally.dto.settlement.SettlementCreateRequest;
+import com.tripTally.dto.settlement.SettlementResponse;
+import com.tripTally.exception.ApiException;
+import com.tripTally.mapper.DtoMapper;
+import com.tripTally.repository.SettlementRepository;
+import com.tripTally.repository.TripMemberRepository;
 import java.math.RoundingMode;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -46,8 +46,18 @@ public class SettlementRecordingService {
 	@Transactional
 	public SettlementResponse record(Long tripId, User user, SettlementCreateRequest request) {
 		Trip trip = tripAccessService.requireTripMember(tripId, user);
+		TripMember actorMember = tripMemberRepository
+				.findByTripAndUser_Id(trip, user.getId())
+				.orElseThrow(() -> new ApiException(
+						HttpStatus.FORBIDDEN,
+						"You must be a linked traveler on this trip to record a payment."));
 		TripMember from = loadMember(trip, request.getFromMemberId());
 		TripMember to = loadMember(trip, request.getToMemberId());
+		if (!from.getId().equals(actorMember.getId())) {
+			throw new ApiException(
+					HttpStatus.FORBIDDEN,
+					"You can only record money you paid yourself. \"Paid by\" must be your traveler slot on this trip.");
+		}
 		if (from.getId().equals(to.getId())) {
 			throw new ApiException(HttpStatus.BAD_REQUEST, "Choose two different people for a settlement");
 		}

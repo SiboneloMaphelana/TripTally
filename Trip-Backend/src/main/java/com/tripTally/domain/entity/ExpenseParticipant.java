@@ -1,4 +1,4 @@
-package com.triptally.domain.entity;
+package com.tripTally.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,7 +35,7 @@ public class ExpenseParticipant {
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "trip_member_id", nullable = false)
-	private TripMember tripMember;
+	private com.tripTally.domain.entity.TripMember tripMember;
 
 	@Column(name = "owed_amount", nullable = false, precision = 19, scale = 2)
 	private BigDecimal owedAmount;

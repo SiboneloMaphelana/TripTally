@@ -1,4 +1,4 @@
-package com.triptally.service.settlement;
+package com.tripTally.service.settlement;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

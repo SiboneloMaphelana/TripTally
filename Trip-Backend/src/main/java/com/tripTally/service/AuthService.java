@@ -1,14 +1,17 @@
-package com.triptally.service;
+package com.tripTally.service;
 
-import com.triptally.domain.entity.User;
-import com.triptally.dto.auth.AuthResponse;
-import com.triptally.dto.auth.LoginRequest;
-import com.triptally.dto.auth.RegisterRequest;
-import com.triptally.dto.auth.UserResponse;
-import com.triptally.exception.ApiException;
-import com.triptally.mapper.DtoMapper;
-import com.triptally.repository.UserRepository;
-import com.triptally.security.JwtService;
+import com.tripTally.domain.entity.User;
+import com.tripTally.dto.auth.AuthResponse;
+import com.tripTally.dto.auth.ChangePasswordRequest;
+import com.tripTally.dto.auth.LoginRequest;
+import com.tripTally.dto.auth.ProfileUpdateRequest;
+import com.tripTally.dto.auth.ProfileUpdateResponse;
+import com.tripTally.dto.auth.RegisterRequest;
+import com.tripTally.dto.auth.UserResponse;
+import com.tripTally.exception.ApiException;
+import com.tripTally.mapper.DtoMapper;
+import com.tripTally.repository.UserRepository;
+import com.tripTally.security.JwtService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -73,5 +76,37 @@ public class AuthService {
 
 	public UserResponse me(User user) {
 		return dtoMapper.toUser(user);
+	}
+
+	@Transactional
+	public ProfileUpdateResponse updateProfile(User current, ProfileUpdateRequest request) {
+		User user = userRepository.findById(current.getId())
+				.orElseThrow(() -> new ApiException(HttpStatus.UNAUTHORIZED, "User not found"));
+		String newEmail = request.getEmail().trim().toLowerCase();
+		if (!newEmail.equalsIgnoreCase(user.getEmail())
+				&& userRepository.existsByEmailIgnoreCaseAndIdNot(newEmail, user.getId())) {
+			throw new ApiException(HttpStatus.CONFLICT, "That email is already registered");
+		}
+		boolean emailChanged = !user.getEmail().equalsIgnoreCase(newEmail);
+		user.setEmail(newEmail);
+		user.setDisplayName(request.getDisplayName().trim());
+		user = userRepository.save(user);
+		UserResponse body = dtoMapper.toUser(user);
+		String token = emailChanged ? jwtService.generateToken(user) : null;
+		return ProfileUpdateResponse.builder()
+				.user(body)
+				.token(token)
+				.build();
+	}
+
+	@Transactional
+	public void changePassword(User current, ChangePasswordRequest request) {
+		User user = userRepository.findById(current.getId())
+				.orElseThrow(() -> new ApiException(HttpStatus.UNAUTHORIZED, "User not found"));
+		if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPasswordHash())) {
+			throw new ApiException(HttpStatus.BAD_REQUEST, "Current password is incorrect");
+		}
+		user.setPasswordHash(passwordEncoder.encode(request.getNewPassword()));
+		userRepository.save(user);
 	}
 }

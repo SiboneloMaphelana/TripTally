@@ -1,6 +1,6 @@
-package com.triptally.security;
+package com.tripTally.security;
 
-import com.triptally.repository.UserRepository;
+import com.tripTally.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

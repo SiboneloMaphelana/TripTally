@@ -1,6 +1,23 @@
 # TripTally
 
-TripTally is a **travel-focused** expense-sharing app for groups: shared trips, friendly categories, split rules (equal, exact amounts, percentages, shares), balances, **minimum-payment settlement suggestions**, receipt uploads (local disk in dev), and CSV export.
+## Project description
+
+TripTally is a full-stack web app for **group travel expense sharing**. People on the same trip can log spending with travel-oriented categories, assign a **payer**, and split each expense **equally**, by **exact amounts**, **percentages**, or **weighted shares**. The backend computes **per-member balances**, suggests a **small set of payments** to settle debts, and supports **recording settlements** when money changes hands. Members can **upload receipts** (stored on the local filesystem in development; easy to swap for cloud storage later), **export trip data as CSV**, and use **JWT-based login**. The product also includes **user profile updates**, **in-app notifications**, and **payment requests** between trip members so groups can coordinate paybacks without leaving the app.
+
+## Tools & technologies
+
+| Area | Stack |
+|------|--------|
+| **Backend runtime** | Java 21, Apache Maven |
+| **Backend framework** | Spring Boot 4 — Spring Web MVC, Spring Data JPA (Hibernate), Spring Security, Jakarta Bean Validation |
+| **Auth & API** | JWT via **JJWT**; BCrypt for password hashes |
+| **Database** | **PostgreSQL** (main); **H2** for automated tests |
+| **Backend productivity** | Lombok |
+| **Frontend** | Angular 16, TypeScript 5, RxJS, Zone.js |
+| **Frontend UI** | Tailwind CSS 3, PostCSS, Autoprefixer |
+| **Icons** | **Iconify** web component (`iconify-icon`, MDI set via CDN in `index.html`) |
+| **Frontend tests** | Karma, Jasmine |
+| **Docs in repo** | Mermaid diagram below |
 
 ## Architecture
 
@@ -13,7 +30,7 @@ TripTally is a **travel-focused** expense-sharing app for groups: shared trips, 
 | **Domain** | JPA entities, enums (`ExpenseCategory`, `SplitMode`, …) |
 | **Security** | JWT (`JwtService`, `JwtAuthenticationFilter`), BCrypt passwords |
 | **Storage** | `LocalReceiptStorageService` — files under `triptally.storage.receipts-dir` (swap for S3/Cloudinary later) |
-| **Migrations** | Flyway (`V1__init_schema.sql`) |
+| **Schema** | Hibernate `ddl-auto` in `application.properties` (e.g. `create-drop` or `update` in dev; prefer `validate` in production with managed DDL) |
 
 Frontend: **Angular 16**, **Tailwind CSS 3**, **Iconify** (web component), typed interfaces under `src/app/models/`.
 
@@ -71,7 +88,7 @@ Create DB (example):
 CREATE DATABASE triptally;
 ```
 
-Configure `Trip-Backend/src/main/resources/application.yml` (or env vars) for URL, user, and password.
+Configure `Trip-Backend/src/main/resources/application.properties` (or environment variables) for URL, user, and password.
 
 ## Run backend
 
@@ -137,10 +154,12 @@ Includes focused tests for **equal split**, **exact validation**, **percentage v
 |------|--------|------|
 | Auth | POST | `/api/auth/register`, `/api/auth/login` |
 | Auth | GET | `/api/auth/me` |
-| Trips | CRUD + members + expenses + balances + settlements + summary + CSV | `/api/trips/...` |
+| Auth | PATCH / POST | `/api/auth/me` (profile), `/api/auth/change-password` |
+| Trips | CRUD + members + expenses + balances + settlements + summary + CSV + payment-requests | `/api/trips/...` |
 | Expenses | GET/PUT/DELETE + receipt | `/api/expenses/{id}` |
+| Notifications | GET / POST | `/api/notifications`, `/api/notifications/unread-count`, `/api/notifications/{id}/read` |
 
-See controllers under `com.triptally.controller` for the full contract.
+See controllers under `com.tripTally.controller` for the full contract.
 
 ## Screenshot placeholders
 

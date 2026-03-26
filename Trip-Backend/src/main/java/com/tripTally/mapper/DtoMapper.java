@@ -1,21 +1,24 @@
-package com.triptally.mapper;
+package com.tripTally.mapper;
 
-import com.triptally.domain.entity.Expense;
-import com.triptally.domain.entity.ExpenseParticipant;
-import com.triptally.domain.entity.ReceiptAttachment;
-import com.triptally.domain.entity.Settlement;
-import com.triptally.domain.entity.Trip;
-import com.triptally.domain.entity.TripMember;
-import com.triptally.domain.entity.User;
-import com.triptally.dto.auth.UserResponse;
-import com.triptally.dto.balance.MemberBalanceResponse;
-import com.triptally.dto.expense.ExpenseParticipantResponse;
-import com.triptally.dto.expense.ExpenseResponse;
-import com.triptally.dto.member.TripMemberResponse;
-import com.triptally.dto.settlement.SettlementResponse;
-import com.triptally.dto.settlement.SettlementSuggestionResponse;
-import com.triptally.dto.trip.TripResponse;
-import com.triptally.service.settlement.SettlementSuggestion;
+import com.tripTally.domain.entity.Expense;
+import com.tripTally.domain.entity.ExpenseParticipant;
+import com.tripTally.domain.entity.InAppNotification;
+import com.tripTally.domain.entity.PaymentRequest;
+import com.tripTally.domain.entity.Settlement;
+import com.tripTally.domain.entity.Trip;
+import com.tripTally.domain.entity.TripMember;
+import com.tripTally.domain.entity.User;
+import com.tripTally.dto.auth.UserResponse;
+import com.tripTally.dto.balance.MemberBalanceResponse;
+import com.tripTally.dto.expense.ExpenseParticipantResponse;
+import com.tripTally.dto.expense.ExpenseResponse;
+import com.tripTally.dto.member.TripMemberResponse;
+import com.tripTally.dto.notification.NotificationResponse;
+import com.tripTally.dto.payment.PaymentRequestResponse;
+import com.tripTally.dto.settlement.SettlementResponse;
+import com.tripTally.dto.settlement.SettlementSuggestionResponse;
+import com.tripTally.dto.trip.TripResponse;
+import com.tripTally.service.settlement.SettlementSuggestion;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -120,6 +123,35 @@ public class DtoMapper {
 				.toMemberId(s.getToMemberId())
 				.toMemberLabel(s.getToMemberLabel())
 				.amount(s.getAmount())
+				.build();
+	}
+
+	public NotificationResponse toNotification(InAppNotification n) {
+		Trip trip = n.getTrip();
+		return NotificationResponse.builder()
+				.id(n.getId())
+				.type(n.getType())
+				.title(n.getTitle())
+				.message(n.getMessage())
+				.tripId(trip != null ? trip.getId() : null)
+				.tripTitle(trip != null ? trip.getTitle() : null)
+				.read(n.getReadAt() != null)
+				.createdAt(n.getCreatedAt())
+				.build();
+	}
+
+	public PaymentRequestResponse toPaymentRequest(PaymentRequest p) {
+		return PaymentRequestResponse.builder()
+				.id(p.getId())
+				.tripId(p.getTrip().getId())
+				.creditorMemberId(p.getCreditorMember().getId())
+				.creditorLabel(p.getCreditorMember().getDisplayName())
+				.debtorMemberId(p.getDebtorMember().getId())
+				.debtorLabel(p.getDebtorMember().getDisplayName())
+				.amount(p.getAmount())
+				.note(p.getNote())
+				.status(p.getStatus())
+				.createdAt(p.getCreatedAt())
 				.build();
 	}
 }

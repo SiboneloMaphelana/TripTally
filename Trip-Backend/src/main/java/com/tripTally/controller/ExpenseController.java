@@ -1,10 +1,10 @@
-package com.triptally.controller;
+package com.tripTally.controller;
 
-import com.triptally.dto.expense.ExpenseResponse;
-import com.triptally.dto.expense.ExpenseUpdateRequest;
-import com.triptally.service.CurrentUserService;
-import com.triptally.service.ExpenseService;
-import com.triptally.service.ReceiptService;
+import com.tripTally.dto.expense.ExpenseResponse;
+import com.tripTally.dto.expense.ExpenseUpdateRequest;
+import com.tripTally.service.CurrentUserService;
+import com.tripTally.service.ExpenseService;
+import com.tripTally.service.ReceiptService;
 import jakarta.validation.Valid;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;

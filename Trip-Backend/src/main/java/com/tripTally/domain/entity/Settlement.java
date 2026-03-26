@@ -1,4 +1,4 @@
-package com.triptally.domain.entity;
+package com.tripTally.domain.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,15 +36,15 @@ public class Settlement {
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "trip_id", nullable = false)
-	private Trip trip;
+	private com.tripTally.domain.entity.Trip trip;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "from_member_id", nullable = false)
-	private TripMember fromMember;
+	private com.tripTally.domain.entity.TripMember fromMember;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "to_member_id", nullable = false)
-	private TripMember toMember;
+	private com.tripTally.domain.entity.TripMember toMember;
 
 	@Column(nullable = false, precision = 19, scale = 2)
 	private BigDecimal amount;
@@ -54,7 +54,7 @@ public class Settlement {
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "recorded_by_user_id", nullable = false)
-	private User recordedBy;
+	private com.tripTally.domain.entity.User recordedBy;
 
 	@CreatedDate
 	@Column(name = "created_at", nullable = false, updatable = false)

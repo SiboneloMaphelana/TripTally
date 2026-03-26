@@ -1,7 +1,7 @@
-package com.triptally.security;
+package com.tripTally.security;
 
-import com.triptally.config.TriptallyProperties;
-import com.triptally.domain.entity.User;
+import com.tripTally.config.TriptallyProperties;
+import com.tripTally.domain.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

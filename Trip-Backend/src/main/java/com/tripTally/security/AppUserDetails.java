@@ -1,6 +1,6 @@
-package com.triptally.security;
+package com.tripTally.security;
 
-import com.triptally.domain.entity.User;
+import com.tripTally.domain.entity.User;
 import java.util.Collection;
 import java.util.List;
 import lombok.Getter;

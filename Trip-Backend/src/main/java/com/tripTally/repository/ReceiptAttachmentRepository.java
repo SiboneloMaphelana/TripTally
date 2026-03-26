@@ -1,7 +1,7 @@
-package com.triptally.repository;
+package com.tripTally.repository;
 
-import com.triptally.domain.entity.Expense;
-import com.triptally.domain.entity.ReceiptAttachment;
+import com.tripTally.domain.entity.Expense;
+import com.tripTally.domain.entity.ReceiptAttachment;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
